@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Gustavo Ferreira Palma",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0.9,
+      "left": -134.65,
+      "rotate": 270,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -3.2,
+      "left": 130.4,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -97.3, "left": -144.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GND.8", "lcd1:GND", "black", [ "v0" ] ],
+    [ "pico:VSYS", "lcd1:VCC", "red", [ "v0" ] ],
+    [ "pico:GP4", "lcd1:SDA", "blue", [ "v19.2", "h172.8", "v-105.8" ] ],
+    [ "pico:GP5", "lcd1:SCL", "purple", [ "v28.8", "h182.4", "v-105.9" ] ],
+    [ "pot1:GND", "pico:GND.8", "black", [ "v57.6", "h-48", "v-28.8" ] ],
+    [ "pot1:VCC", "pico:VSYS", "red", [ "v38.4", "h-77.6" ] ],
+    [ "pot1:SIG", "pico:GP26", "green", [ "v76.8", "h-0.4" ] ]
+  ],
+  "dependencies": {}
+}
